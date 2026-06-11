@@ -1,0 +1,95 @@
+{
+  "known_hashes": {
+    "ed018450a7d5fa75599e744db607d61e": {
+      "name": "WannaCry Ransomware Dropper",
+      "malware_family": "WannaCry",
+      "type": "Ransomware",
+      "severity": "CRITICAL",
+      "score": 100,
+      "source": "Local Threat KnowledgeBase (MalwareBazaar/MITRE ATT&CK)",
+      "description": "Initial dropper for WannaCry ransomware targeting MS17-010."
+    },
+    "db349b97c37d22f5ea1d1841e3c89eb4": {
+      "name": "Emotet Banking Trojan / Loader",
+      "malware_family": "Emotet",
+      "type": "Trojan/Botnet",
+      "severity": "CRITICAL",
+      "score": 95,
+      "source": "Local Threat KnowledgeBase (Abuse.ch Feeds)",
+      "description": "Modular banking trojan used for initial access and payload distribution."
+    },
+    "51144f172f611ecb104c264368f44135": {
+      "name": "LockBit 3.0 Ransomware Encryptor",
+      "malware_family": "LockBit",
+      "type": "Ransomware",
+      "severity": "CRITICAL",
+      "score": 100,
+      "source": "Local Threat KnowledgeBase (CISA Advisory)",
+      "description": "Ransomware encryptor with anti-analysis and defense evasion capabilities."
+    },
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855": {
+      "name": "Empty File (Zero-Length SHA-256)",
+      "malware_family": "None",
+      "type": "Benign Artifact",
+      "severity": "LOW",
+      "score": 0,
+      "source": "Standard Cryptographic Hash Reference",
+      "description": "Standard SHA-256 hash of an empty zero-byte file."
+    }
+  },
+  "known_ips": {
+    "185.220.101.5": {
+      "category": "Tor Exit Node",
+      "severity": "MEDIUM",
+      "score": 65,
+      "source": "Tor Project Directory / Local Threat KnowledgeBase",
+      "tags": ["tor", "proxy", "anonymization", "suspicious"]
+    },
+    "45.33.32.156": {
+      "category": "Authorized Security Scanner (Nmap scanme)",
+      "severity": "LOW",
+      "score": 15,
+      "source": "Insecure.org Scanme Project",
+      "tags": ["scanner", "educational", "benign-testing"]
+    },
+    "194.26.29.112": {
+      "category": "Known Bulletproof C2 Server",
+      "severity": "CRITICAL",
+      "score": 95,
+      "source": "Local Threat KnowledgeBase (Abuse.ch Feeds)",
+      "tags": ["c2", "cobalt-strike", "bulletproof-hosting"]
+    }
+  },
+  "known_domains": {
+    "evil-payment-verification.com": {
+      "category": "Credential Harvesting / Phishing",
+      "severity": "CRITICAL",
+      "score": 90,
+      "source": "Local Threat KnowledgeBase (OpenPhish feed)",
+      "target_brand": "Financial Institution"
+    },
+    "malicious-payload-cdn.net": {
+      "category": "Malware Staging Server",
+      "severity": "HIGH",
+      "score": 85,
+      "source": "Local Threat KnowledgeBase (URLhaus feed)",
+      "malware_family": "AgentTesla"
+    }
+  },
+  "known_c2_campaigns": [
+    {
+      "campaign_id": "CAMP-2026-DARKSTORM",
+      "name": "Operation DarkStorm",
+      "actor": "APT29 (Cozy Bear)",
+      "iocs": ["194.26.29.112", "malicious-payload-cdn.net", "51144f172f611ecb104c264368f44135"],
+      "description": "Spear-phishing and credential dumping campaign targeting diplomatic missions."
+    },
+    {
+      "campaign_id": "CAMP-2026-SWIFTLOCK",
+      "name": "SwiftLock Campaign",
+      "actor": "FIN7",
+      "iocs": ["db349b97c37d22f5ea1d1841e3c89eb4", "185.220.101.5"],
+      "description": "Financial extortion and banking credential theft operation."
+    }
+  ]
+}

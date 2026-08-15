@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: cti_backend
+    restart: always
+    command: uvicorn app.api.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - ENVIRONMENT=production
+    volumes:
+      - cti_data:/app/data
+    env_file:
+      - .env
+
+  frontend:
+    build: .
+    container_name: cti_frontend
+    restart: always
+    command: streamlit run frontend/app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - FRONTEND_PORT=8501
+    volumes:
+      - cti_data:/app/data
+    depends_on:
+      - backend
+    env_file:
+      - .env
+
+volumes:
+  cti_data:
+    driver: local
